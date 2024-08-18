@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Test</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        select, input {
+            margin: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button.inactive {
+            color: grey;
+            pointer-events: none;
+        }
+        button.active {
+            color: black;
+            pointer-events: auto;
+        }
+        #yes_button.active {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        #no_button.active {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+        #central_number {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+        .islast {
+            color: #f44336;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>当前认知水平</h1>
+        <div>
+            <label for="level">选择Level:</label>
+            <select id="level" onchange="setParameters()">
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+            </select>
+        </div>
+        <div>
+            <label for="interval">刷新间隔:</label>
+            <input type="number" step="0.5" id="interval" value="2"> 秒
+        </div>
+        <div>
+            <label for="num_per">每轮展示数字数:</label>
+            <input type="number" id="num_per" value="2">
+        </div>
+        <div>
+            <label for="digitnum">数字位数:</label>
+            <input type="number" id="digitnum" value="1">
+        </div>
+        <button onclick="startRecording()">开始记录</button>
+        <button onclick="endRecording()">结束记录</button>
+        <h2 id="central_number">中央数字</h2>
+        <h3 id="alert"></h3>
+        <div>
+            <button id="yes_button" class="inactive" onclick="submitResponse('YES')">YES</button>
+            <button id="no_button" class="inactive" onclick="submitResponse('NO')">NO</button>
+        </div>
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
